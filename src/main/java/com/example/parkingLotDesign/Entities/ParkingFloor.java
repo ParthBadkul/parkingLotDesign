@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cascade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -19,7 +20,7 @@ public class ParkingFloor {
 
     private String floorName;
 
-    @OneToMany(mappedBy = "parkingFloorId")
+    @OneToMany(mappedBy = "parkingFloorId" ,cascade = CascadeType.ALL)
 
     private List<ParkingSpot> parkingSpotList;
 
@@ -33,5 +34,6 @@ public class ParkingFloor {
     }
 
     public ParkingFloor() {
+        this.parkingSpotList = new ArrayList<>();
     }
 }

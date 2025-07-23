@@ -2,8 +2,10 @@ package com.example.parkingLotDesign.Services;
 
 import com.example.parkingLotDesign.Entities.ParkingFloor;
 import com.example.parkingLotDesign.Entities.ParkingLot;
+import com.example.parkingLotDesign.Entities.ParkingSpot;
 import com.example.parkingLotDesign.Repos.ParkingFloorRepo;
 import com.example.parkingLotDesign.Repos.ParkingLotRepo;
+import com.example.parkingLotDesign.Repos.ParkingSpotRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,9 @@ public class ParkingLotServices {
 
     @Autowired
     private ParkingFloorRepo parkingFloorRepo;
+
+    @Autowired
+    private ParkingSpotRepo parkingSpotRepo;
 
 
     public ParkingLot createParkingLot(ParkingLot parkingLot){
@@ -48,6 +53,35 @@ public class ParkingLotServices {
         System.out.println(parkingLot.toString());
 
       return parkingLotRepo.save(parkingLot);
+
+    }
+
+
+    public List<ParkingSpot> addParkingSpots(List<ParkingSpot> parkingSpotList) {
+
+        return parkingSpotRepo.saveAll(parkingSpotList);
+
+    }
+
+    public ParkingFloor addParkingSpotToFloors( Long floorId ,List<ParkingSpot> parkingSpotList){
+
+
+    Optional <ParkingFloor> p = parkingFloorRepo.findById(floorId);
+
+    ParkingFloor parkingFloor = p.get();
+
+    List<ParkingSpot> parkingSpots = parkingFloor.getParkingSpotList();
+
+    for(ParkingSpot parkingSpot : parkingSpotList){
+
+        parkingSpots.add(parkingSpot);
+        parkingSpot.setParkingFloorId(parkingFloor);
+
+    }
+
+    parkingFloor.setParkingSpotList(parkingSpots);
+
+    return parkingFloorRepo.save(parkingFloor);
 
     }
 

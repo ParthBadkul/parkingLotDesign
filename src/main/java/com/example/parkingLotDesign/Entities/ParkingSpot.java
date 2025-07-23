@@ -1,6 +1,7 @@
 package com.example.parkingLotDesign.Entities;
 
 import com.example.parkingLotDesign.Enums.ParkingSpotType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,6 +20,7 @@ public class ParkingSpot {
       private Boolean isOccupied;
 
       @ManyToOne
+      @JsonIgnore
       private ParkingFloor parkingFloorId;
 
       @OneToOne

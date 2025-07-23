@@ -2,6 +2,7 @@ package com.example.parkingLotDesign.Controller;
 
 import com.example.parkingLotDesign.Entities.ParkingFloor;
 import com.example.parkingLotDesign.Entities.ParkingLot;
+import com.example.parkingLotDesign.Entities.ParkingSpot;
 import com.example.parkingLotDesign.Services.ParkingLotServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,19 @@ public class ParkingLotController {
     public ParkingLot createParkingFloor(@PathVariable Long id , @RequestBody List<ParkingFloor> parkingFloorList){
 
             return parkingLotServices.createParkingFloors(id, parkingFloorList );
+
+    }
+
+    @PostMapping("/createSpots")
+    public List<ParkingSpot> createParkingSpots(@RequestBody List<ParkingSpot> parkingSpotList){
+
+        return parkingLotServices.addParkingSpots(parkingSpotList);
+    }
+
+    @PostMapping("/{id}/addSpotsToFloor")
+    public ParkingFloor addSpotsToFloor(@PathVariable Long id , @RequestBody List<ParkingSpot> parkingSpots){
+
+        return parkingLotServices.addParkingSpotToFloors(id , parkingSpots);
 
     }
 
