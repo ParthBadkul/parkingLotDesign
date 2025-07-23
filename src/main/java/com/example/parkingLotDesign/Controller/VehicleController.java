@@ -1,6 +1,7 @@
 package com.example.parkingLotDesign.Controller;
 
 import com.example.parkingLotDesign.Entities.ParkingSpot;
+import com.example.parkingLotDesign.Entities.ParkingTicket;
 import com.example.parkingLotDesign.Entities.Vehicle;
 import com.example.parkingLotDesign.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,7 @@ public class VehicleController {
   private   VehicleService vehicleService;
 
     @PostMapping("/{id}/park")
-    public Object parkVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle){
+    public ParkingTicket parkVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle){
 
         return vehicleService.parkVehicle(id, vehicle);
 

@@ -1,6 +1,7 @@
 package com.example.parkingLotDesign.Services;
 
 import com.example.parkingLotDesign.Entities.ParkingLot;
+import com.example.parkingLotDesign.Entities.ParkingTicket;
 import com.example.parkingLotDesign.Entities.Vehicle;
 import com.example.parkingLotDesign.Repos.ParkingLotRepo;
 import com.example.parkingLotDesign.Repos.VehicleRepo;
@@ -23,7 +24,7 @@ public class VehicleService {
     private ParkingLotRepo parkingLotRepo;
 
 
-    public Object parkVehicle(Long id , Vehicle vehicle){
+    public ParkingTicket parkVehicle(Long id , Vehicle vehicle){
         Optional<ParkingLot> p = parkingLotRepo.findById(id);
         ParkingLot parkingLot1 = p.get();
 
