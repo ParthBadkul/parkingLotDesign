@@ -45,7 +45,7 @@ public class ParkingSpotStratergy implements SpotStratergy {
    public Boolean isCompatibe(ParkingSpotType spotType, VehicleType vehicleType) {
 
        return switch (vehicleType){
-           case CAR , MotorCycle->  true;
+           case CAR , MotorCycle-> spotType == ParkingSpotType.SMALL || spotType == ParkingSpotType.MEDIUM ;
            case  BUS -> spotType == ParkingSpotType.MEDIUM || spotType == ParkingSpotType.LARGE;
            case Truck -> spotType == ParkingSpotType.LARGE;
            case HeavyVehicles -> false;

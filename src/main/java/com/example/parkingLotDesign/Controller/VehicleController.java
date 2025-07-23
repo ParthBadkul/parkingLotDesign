@@ -5,6 +5,7 @@ import com.example.parkingLotDesign.Entities.ParkingTicket;
 import com.example.parkingLotDesign.Entities.Vehicle;
 import com.example.parkingLotDesign.Services.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,9 +18,17 @@ public class VehicleController {
   private   VehicleService vehicleService;
 
     @PostMapping("/{id}/park")
-    public ParkingTicket parkVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle){
+    public ResponseEntity<Long> parkVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle){
 
-        return vehicleService.parkVehicle(id, vehicle);
+        ParkingTicket p = vehicleService.parkVehicle(id, vehicle);
+
+        return ResponseEntity.ok(p.getId());
+    }
+
+    @PostMapping("/unPark/{id}")
+    public ParkingSpot unParkVehicle(@PathVariable Long id){
+
+        return vehicleService.unParkVehicle(id);
 
     }
 

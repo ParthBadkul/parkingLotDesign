@@ -17,7 +17,7 @@ public class HelperFunctions {
     public boolean parkingSpotsAvailabe(List<ParkingSpot> parkingSpots , Vehicle vehicle) {
 
         for(ParkingSpot p : parkingSpots){
-            if(spotStratergy.isCompatibe(p.getParkingSpotType() ,vehicle.getVehicleType())){
+            if(!p.getIsOccupied() && spotStratergy.isCompatibe(p.getParkingSpotType() ,vehicle.getVehicleType())){
                 return true;
             }
         }

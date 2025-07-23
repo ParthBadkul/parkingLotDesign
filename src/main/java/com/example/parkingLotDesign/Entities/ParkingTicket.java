@@ -16,6 +16,7 @@ public class ParkingTicket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
+
     private LocalDateTime inTime;
 
     @OneToOne(cascade = CascadeType.ALL)
