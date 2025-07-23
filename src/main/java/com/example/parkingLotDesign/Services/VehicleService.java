@@ -17,7 +17,7 @@ public class VehicleService {
     private Entrypanel entrypanel;
 
     @Autowired
-    private VehicleRepo vehicleRepo;
+    private VehicleRepo vehicleRepo;// jes
 
     @Autowired
     private ParkingLotRepo parkingLotRepo;
