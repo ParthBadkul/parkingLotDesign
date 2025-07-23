@@ -23,7 +23,7 @@ public class ParkingSpot {
       @JsonIgnore
       private ParkingFloor parkingFloorId;
 
-      @OneToOne
+      @OneToOne(cascade = CascadeType.ALL)
       @JoinColumn(name = "vehicle_id")
       private Vehicle vehicle;
 
