@@ -1,5 +1,4 @@
 package com.example.parkingLotDesign.Services;
-
 import com.example.parkingLotDesign.Entities.ParkingFloor;
 import com.example.parkingLotDesign.Entities.ParkingLot;
 import com.example.parkingLotDesign.Entities.ParkingSpot;
@@ -8,8 +7,6 @@ import com.example.parkingLotDesign.Repos.ParkingLotRepo;
 import com.example.parkingLotDesign.Repos.ParkingSpotRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -63,7 +60,7 @@ public class ParkingLotServices {
 
     }
 
-    public ParkingFloor addParkingSpotToFloors( Long floorId ,List<ParkingSpot> parkingSpotList){
+    public ParkingFloor addParkingSpotToFloors( Long floorId ,List<ParkingSpot> parkingSpotList)  {
 
 
     Optional <ParkingFloor> p = parkingFloorRepo.findById(floorId);
